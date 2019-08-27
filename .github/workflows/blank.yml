@@ -6,6 +6,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+    
+    - name: Test
+      run: ls -la
       
     - name: Download current Docker-Image
       run: docker pull koseven/docker:travis-devel
