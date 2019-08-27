@@ -6,7 +6,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    
+    - name: Clone current PR/Push
+      run: git checkout $GITHUB_SHA .
+      
     - name: Test
       run: ls -la
       
