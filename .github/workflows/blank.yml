@@ -6,7 +6,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@$($GITHUB_SHA)
+    - uses: actions/checkout
+      with: 
+        token: $($GITHUB_SHA)
       
     - name: Test
       run: ls -la
