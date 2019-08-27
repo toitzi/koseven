@@ -6,11 +6,17 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+    - name: Debug
+      run: echo $(pwd)
+      
     - name: Download Docker Image
       run: docker pull koseven/docker:travis-devel
+      
     - name: Run Docker Image in Background
       run: docker run -dtP --name unittest -v $(pwd):/tmp/koseven/ koseven/docker:travis-devel
+      
     - name: Install Docker dependency
       run: docker exec unittest /bin/sh -c "service redis-server start; cd /tmp/koseven; composer install"
+      
     - name: Run unittest
       run: docker exec unittest /bin/sh -c "cd /tmp/koseven; php vendor/bin/phpunit"
